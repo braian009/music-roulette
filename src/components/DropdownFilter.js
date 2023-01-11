@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const DropdownFilter = ({genre, optionList, onSelectedOption}) => {
+const DropdownFilter = ({ genre, optionList, onSelectedOption, start }) => {
   const menuRef = React.useRef(null);
   const toggleRef = React.useRef(null);
 
@@ -11,7 +11,7 @@ const DropdownFilter = ({genre, optionList, onSelectedOption}) => {
         "top",
         `${toggleRef.current.getBoundingClientRect().height}px`
       );
-      console.log(toggleRef.current.getBoundingClientRect().height)
+      console.log(toggleRef.current.getBoundingClientRect().height);
       const container = document.querySelector(".dropdown-inner");
       container.style.setProperty(
         "height",
@@ -25,19 +25,22 @@ const DropdownFilter = ({genre, optionList, onSelectedOption}) => {
     }
   }, []);
 
-
-
-  
-
   const handleSelected = (option) => {
+    if (start) return;
+
     onSelectedOption(option);
     setIsOpen(false);
-    setSelectedOption(option)
+    setSelectedOption(option);
   };
+
+  React.useEffect(() => {
+    if (start) {
+      setIsOpen(false);
+    }
+  }, [start,])
 
   const [selectedOption, setSelectedOption] = React.useState(genre);
   const [isOpen, setIsOpen] = React.useState(false);
-
 
   return (
     <DropdownFilterContainer>
@@ -68,6 +71,7 @@ const DropdownFilterContainer = styled.div`
   width: 100%;
   max-width: 30em;
   position: relative;
+  margin-top: 1.5em;
 
   .dropdown-inner {
     display: flex;
@@ -88,7 +92,7 @@ const DropdownFilterContainer = styled.div`
   }
 
   .dropdown-toggle {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     padding: 0.5em 0.8em;
     position: relative;
     top: 1.5em;
@@ -106,7 +110,7 @@ const DropdownFilterContainer = styled.div`
   .dropdown-menu {
     visibility: hidden;
     opacity: 0;
-    padding: .5em 0;
+    padding: 0.5em 0;
     transition: visibility 0s linear 0.3s;
     transition: opacity 0.3s linear;
 
@@ -125,11 +129,20 @@ const DropdownFilterContainer = styled.div`
 
       * {
         font-size: 0.8rem;
-        background-color: black;
-        padding: 0.5em 0.8em;
-        line-height: 1;
+        background-color: var(--blue-secondary);
+        padding: 0.4em 0.7em;
+        border: 1px solid var(--blue-secondary);
+        color: var(--font-color);
+        line-height: 0.8;
         margin-bottom: 0.25em;
         border-radius: 20px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--blue-primary);
+          border: 1px solid var(--blue-primary);
+        }
       }
 
       * + * {

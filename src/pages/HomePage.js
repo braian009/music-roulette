@@ -2,12 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
-
 const HomePage = () => {
-
-
-
   return (
     <HomeContainer>
       <div className="home-inner">
@@ -26,7 +21,7 @@ const HomePage = () => {
   );
 };
 
-const HomeContainer = styled.section`
+const HomeContainer = styled.div`
   color: #f8f8f8;
   width: 100%;
   height: 100%;
@@ -48,27 +43,29 @@ const HomeContainer = styled.section`
     }
 
     .cta-button {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       display: block;
       width: 7em;
       text-align: center;
       margin: 0 auto;
       margin-top: 1.5em;
       color: #f4f4f4;
-      background: none;
+      background: var(--green-secondary);
       padding: 0.5em 1em;
-      border: 1px solid #f4f4f4;
+      border: 1px solid var(--green-secondary);
       border-radius: 20px;
       outline: none;
-      background-color: hsla(0, 0%, 0%, 0.4);
+
+      /* box-shadow: 4px 4px 22px #f4f4f4; */
 
       transition: all 0.2s ease-out;
 
-      box-shadow: 0px 11px 14px black;
 
-      &:hover {
-        background-color: #1db954;
-        border: 1px solid #1db954;
+      &:hover,
+      &:focus {
+        background-color: var(--green-primary);
+        border: 1px solid var(--green-primary);
+        transform: scale(1.05);
       }
     }
   }

@@ -14,6 +14,8 @@ requestBody.append("client_id", "a695753cdff247038297819809107086");
 requestBody.append("client_secret", "8ff09201d7af455cbd4b56805b65122d");
 
 const App = () => {
+
+  console.log('renderiza')
   const [token, setToken] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -63,7 +65,7 @@ const App = () => {
   );
 };
 
-const AppContainer = styled.div`
+const AppContainer = styled.section`
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;

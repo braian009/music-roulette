@@ -2,9 +2,13 @@
   box-sizing: border-box;
   font-size: calc(0.75em + 1vw);
 
-  --font-color: #ababab;
+  --font-color: hsl(0deg 0% 77%);
   --bg-primary: #0c0c0c;
   --bg-secondary: #1f1f1f;
+  --blue-primary: hsl(211deg 75% 42%);
+  --blue-secondary: hsl(211deg 65% 32%);
+  --green-primary: hsl(141deg 73% 42%);
+  --green-secondary: hsl(141deg 73% 32%);
 }
 
 @media (min-width: 50em) {
