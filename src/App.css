@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
 :root {
   box-sizing: border-box;
   font-size: calc(0.75em + 1vw);
 
-  --font-color: hsl(0deg 0% 77%);
+  --gray-primary: hsl(0, 0%, 82%);
   --bg-primary: #0c0c0c;
   --bg-secondary: #1f1f1f;
   --blue-primary: hsl(211deg 75% 42%);
-  --blue-secondary: hsl(211deg 65% 32%);
-  --green-primary: hsl(141deg 73% 42%);
-  --green-secondary: hsl(141deg 73% 32%);
+  --blue-secondary: hsl(211deg 65% 37%);
+  --green-primary: #1db954;
+  --green-secondary: hsl(141deg 73% 37%);
+  --white-primary: #ececec;
+  --orange-primary: #c8835b;
 }
 
 @media (min-width: 50em) {
@@ -17,8 +21,6 @@
   }
 }
 
-
-
 *,
 ::before,
 ::after {
@@ -26,10 +28,17 @@
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Heebo', Helvetica, Arial, sans-serif;
   color: var(--font-color);
   background-color: var(--bg-primary);
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--white-primary);
 }
 
 .App {
@@ -37,7 +46,32 @@ body {
   height: 100%;
 }
 
-
 a {
   text-decoration: none;
+}
+
+.cta-button {
+  font-size: 0.9rem;
+  line-height: 1.1;
+  display: block;
+  width: 7em;
+  margin: 0 auto;
+  margin-top: 1.5em;
+  padding: 0.5em 1em;
+  text-align: center;
+  color: var(--white-primary);
+  background-color: var(--green-secondary);
+  border: 1px solid var(--green-secondary);
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.2s ease-out;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background-color: var(--green-primary);
+  border: 1px solid var(--green-primary);
+  transform: scale(1.05);
 }

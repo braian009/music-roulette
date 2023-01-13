@@ -5,6 +5,9 @@ const DropdownFilter = ({ genre, optionList, onSelectedOption, start }) => {
   const menuRef = React.useRef(null);
   const toggleRef = React.useRef(null);
 
+  const [selectedOption, setSelectedOption] = React.useState(genre);
+  const [isOpen, setIsOpen] = React.useState(false);
+
   React.useEffect(() => {
     if (menuRef.current && toggleRef.current) {
       menuRef.current.style.setProperty(
@@ -20,8 +23,6 @@ const DropdownFilter = ({ genre, optionList, onSelectedOption, start }) => {
           toggleRef.current.getBoundingClientRect().height
         }px`
       );
-
-      console.log(menuRef.current.scrollHeight);
     }
   }, []);
 
@@ -37,10 +38,7 @@ const DropdownFilter = ({ genre, optionList, onSelectedOption, start }) => {
     if (start) {
       setIsOpen(false);
     }
-  }, [start,])
-
-  const [selectedOption, setSelectedOption] = React.useState(genre);
-  const [isOpen, setIsOpen] = React.useState(false);
+  }, [start]);
 
   return (
     <DropdownFilterContainer>
@@ -67,9 +65,9 @@ const DropdownFilter = ({ genre, optionList, onSelectedOption, start }) => {
 };
 
 const DropdownFilterContainer = styled.div`
-  margin: 0 auto;
   width: 100%;
   max-width: 30em;
+  margin: 0 auto;
   position: relative;
   margin-top: 1.5em;
 
@@ -92,16 +90,16 @@ const DropdownFilterContainer = styled.div`
   }
 
   .dropdown-toggle {
-    font-size: 1.15rem;
+    font-size: 1.15em;
     padding: 0.5em 0.8em;
     position: relative;
-    top: 1.5em;
+    top: 2.5em;
     background: none;
     line-height: 0.8;
     outline: none;
-    color: var(--font-color);
+    color: var(--white-primary);
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--blue-primary);
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.5, 1.2) 0.3s;
@@ -113,7 +111,6 @@ const DropdownFilterContainer = styled.div`
     padding: 0.5em 0;
     transition: visibility 0s linear 0.3s;
     transition: opacity 0.3s linear;
-
     position: absolute;
 
     ul {
@@ -128,13 +125,13 @@ const DropdownFilterContainer = styled.div`
       transition: all 0.3s ease-out;
 
       * {
-        font-size: 0.8rem;
-        background-color: var(--blue-secondary);
-        padding: 0.4em 0.7em;
-        border: 1px solid var(--blue-secondary);
-        color: var(--font-color);
         line-height: 0.8;
+        font-size: 0.8em;
         margin-bottom: 0.25em;
+        padding: 0.4em 0.7em;
+        background-color: var(--blue-secondary);
+        color: var(--gray-primary);
+        border: 1px solid var(--blue-secondary);
         border-radius: 20px;
         transition: all 0.2s linear;
         cursor: pointer;
@@ -142,6 +139,7 @@ const DropdownFilterContainer = styled.div`
         &:hover {
           background-color: var(--blue-primary);
           border: 1px solid var(--blue-primary);
+          color: var(--white-primary);
         }
       }
 

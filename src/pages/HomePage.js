@@ -1,31 +1,44 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import LoadingPage from "./LoadingPage";
 
-const HomePage = () => {
+const HomePage = ({token}) => {
+
+  if (!token) {
+    return <LoadingPage loading={true}/>;
+  }
   return (
     <HomeContainer>
-      <div className="home-inner">
+      <motion.div
+        className="home-inner"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <h1>Music Roulette</h1>
         <hr />
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia a
-          ullam praesentium. Laudantium sunt cumque magnam officia inventore
-          quia eos, obcaecati quo dolores pariatur ducimus.
+          Music roulette allows users to spin a virtual roulette to randomly
+          select a song from the genre of choice, each of those genres are based
+          on one of its most popular playlists on spotify. Once the track is
+          selected, the user can head to the app to give it a try and maybe
+          discover a song of his liking.
         </p>
         <Link to="/roulette" className="cta-button">
           Try it out
         </Link>
-      </div>
+      </motion.div>
     </HomeContainer>
   );
 };
 
 const HomeContainer = styled.div`
-  color: #f8f8f8;
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  color: var(--white-primary);
 
   .home-inner {
     padding: 12em 0.5em;
@@ -36,37 +49,15 @@ const HomeContainer = styled.div`
       text-align: center;
     }
 
-    p {
-      font-size: 0.7rem;
-      text-align: center;
-      color: #f4f4f4;
+    hr {
+      border-color: var(--blue-primary);
     }
 
-    .cta-button {
-      font-size: 0.9rem;
-      display: block;
-      width: 7em;
+    p {
+      font-size: 0.9em;
+      line-height: 1.2;
       text-align: center;
-      margin: 0 auto;
-      margin-top: 1.5em;
-      color: #f4f4f4;
-      background: var(--green-secondary);
-      padding: 0.5em 1em;
-      border: 1px solid var(--green-secondary);
-      border-radius: 20px;
-      outline: none;
-
-      /* box-shadow: 4px 4px 22px #f4f4f4; */
-
-      transition: all 0.2s ease-out;
-
-
-      &:hover,
-      &:focus {
-        background-color: var(--green-primary);
-        border: 1px solid var(--green-primary);
-        transform: scale(1.05);
-      }
+      color: var(--gray-primary);
     }
   }
 

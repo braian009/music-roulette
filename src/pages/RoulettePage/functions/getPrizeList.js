@@ -1,6 +1,4 @@
 
-
-
 const generateId = () =>
   `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}}`;
 
@@ -14,7 +12,7 @@ const generateId = () =>
 const getReproducedPrizeList = (items) => {
   return [
     ...items,
-    ...reproductionArray(items, items.length * 3),
+    ...reproductionArray(items, items.length),
     ...items,
     ...reproductionArray(items, items.length),
   ];
